@@ -1,0 +1,209 @@
+[
+  {
+    "id": "1",
+    "name": "Samim Haque",
+    "address": "3 Topsia Road Kolkata",
+    "phone": "+918625625520",
+    "email": "samim@gmail.com"
+  },
+  {
+    "id": "2",
+    "name": "Amir Khan",
+    "address": "10 Topsia Road Kolkata",
+    "phone": "+918625628520",
+    "email": "amir@gmail.com"
+  },
+  {
+    "id": "3",
+    "name": "Babul palash",
+    "address": "10 New town Road Kolkata ",
+    "phone": "+918655628520",
+    "email": "babul@gmail.com"
+  },
+  {
+    "id": "4",
+    "name": "Canchan Bhowmik",
+    "address": "13c New town Road Kolkata ",
+    "phone": "+918655628520",
+    "email": "canchan@gmail.com"
+  },
+  {
+    "id": "5",
+    "name": "Dimple  Pramanik",
+    "address": "32c New town Road Kolkata ",
+    "phone": "+918655628588",
+    "email": "dimple@gmail.com"
+  },
+  {
+    "id": "6",
+    "name": "Emoon William",
+    "address": "50c New town Road Kolkata ",
+    "phone": "+918755628588",
+    "email": "emon@gmail.com"
+  },
+  {
+    "id": "7",
+    "name": "George William",
+    "address": "100c New town Road Kolkata ",
+    "phone": "+918755628088",
+    "email": "george@gmail.com"
+  },
+  {
+    "id": "7",
+    "name": "Faruk Islam",
+    "address": "19c New town Road Kolkata ",
+    "phone": "+918735628088",
+    "email": "faruk@gmail.com"
+  },
+  {
+    "id": "8",
+    "name": "Gobinda Pal",
+    "address": "60 New town Road Kolkata ",
+    "phone": "+918795628088",
+    "email": "gobinda@gmail.com"
+  },
+  {
+    "id": "9",
+    "name": "Harun Ali",
+    "address": "6 New town Road Kolkata ",
+    "phone": "+918799628088",
+    "email": "harun@gmail.com"
+  },
+  {
+    "id": "10",
+    "name": "Imran Ahamed",
+    "address": "60 New town Road Kolkata ",
+    "phone": "+918790628088",
+    "email": "imran@gmail.com"
+  },
+  {
+    "id": "11",
+    "name": "Junayed Ahamed",
+    "address": "90 New town Road Kolkata ",
+    "phone": "+918720628088",
+    "email": "junan@gmail.com"
+  },
+  {
+    "id": "12",
+    "name": "Kalpona  Chawla",
+    "address": "33 New town Road Kolkata ",
+    "phone": "+918720118088",
+    "email": "kalpona@gmail.com"
+  },
+  {
+    "id": "13",
+    "name": "Lalbani Chawla",
+    "address": "35 New town Road Kolkata ",
+    "phone": "+918520118088",
+    "email": "lal@gmail.com"
+  },
+  {
+    "id": "14",
+    "name": "Lalchand Mollick",
+    "address": "35 village town Road Kolkata ",
+    "phone": "+918500118088",
+    "email": "lal20@gmail.com"
+  },
+  {
+    "id": "15",
+    "name": "Mamoon Pathan",
+    "address": "65 village town Road Kolkata ",
+    "phone": "+918200118088",
+    "email": "mamoon@gmail.com"
+  },
+  {
+    "id": "16",
+    "name": "Ninja Biswas",
+    "address": "56 village town Road Kolkata ",
+    "phone": "+918288011808",
+    "email": "ninja@gmail.com"
+  },
+  {
+    "id": "17",
+    "name": "Oswal ajman",
+    "address": "66 village town Road Kolkata ",
+    "phone": "+918288011808",
+    "email": "oswal@gmail.com"
+  },
+  {
+    "id": "18",
+    "name": "Paban Dhawan",
+    "address": "56 village town Road Kolkata ",
+    "phone": "+918258011808",
+    "email": "paban@gmail.com"
+  },
+  {
+    "id": "19",
+    "name": "Quamar Khan",
+    "address": "20h village town Road Kolkata ",
+    "phone": "+918250011808",
+    "email": "amar@gmail.com"
+  },
+  {
+    "id": "20",
+    "name": "Rajatava Ghoshal",
+    "address": "20h New town Road Kolkata ",
+    "phone": "+917250011808",
+    "email": "raja@gmail.com"
+  },
+  {
+    "id": "21",
+    "name": "Subrata Baxi",
+    "address": "80h New town Road Kolkata ",
+    "phone": "+917250011808",
+    "email": "subrata@gmail.com"
+  },
+  {
+    "id": "22",
+    "name": "Tamanna Baxi",
+    "address": "500/h New town Road Kolkata ",
+    "phone": "+917650011808",
+    "email": "tamanna@gmail.com"
+  },
+  {
+    "id": "23",
+    "name": "Ujjal Khan",
+    "address": "80/E New town Road Kolkata ",
+    "phone": "+917350011808",
+    "email": "ujjal@gmail.com"
+  },
+  {
+    "id": "24",
+    "name": "Vikash Ranjan",
+    "address": "80/E New town Road Kolkata ",
+    "phone": "+917390011808",
+    "email": "Vikash@gmail.com"
+  },
+  {
+    "id": "25",
+    "name": "William Tom ",
+    "address": "70/E New town Road Kolkata ",
+    "phone": "+917399011808",
+    "email": "tom@gmail.com"
+  },
+  {
+    "id": "26",
+    "name": "Xerola vickey ",
+    "address": "10/G Home town Road Kolkata ",
+    "phone": "+917322011808",
+    "email": "vickey56255erola256@gmail.com"
+  },
+  {
+    "id": "27",
+    "name": "Yellow Jarun ",
+    "address": "10/G Home town Road Kolkata ",
+    "phone": "+917022011508",
+    "email": "yellow@gmail.com"
+  },
+  {
+    "id": "28",
+    "name": "Zennat Parvin ",
+    "address": "60/G Home town Road Kolkata ",
+    "phone": "+919022011508",
+    "email": "Zinnat@gmail.com"
+  },
+
+  {
+    "img": "https://i.ibb.co/tMkSjZj/tailwind.jpg"
+  }
+]

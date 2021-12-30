@@ -1,75 +1,106 @@
-import axios from "axios";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import useFirebase from "../../hooks/useFirebase.js";
-// import useAuth from "../../hooks/useAuth.js";
+import React, { useState } from "react";
+
+import {
+  Container,
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  CircularProgress,
+  Alert,
+} from "@mui/material";
+
+import { NavLink, useHistory } from "react-router-dom";
+import useAuth from "../../hooks/useAuth.js";
 
 const Register = () => {
-  const { register, handleSubmit, reset } = useForm();
-  const { handleRegister } = useFirebase();
-  const navigate = useNavigate();
-  const onSubmit = (data) => {
-    // console.log(data);
-    const user = { email: data.email, displayName: data.name };
-    axios
-      .post("https://glacial-thicket-49504.herokuapp.com/users", user)
-      .then((res) => {
-        if (res.data.insertedId) {
-          alert("added successfully");
-          handleRegister(data.email, data.password, data.name);
-          reset();
-          navigate.push("/");
-        }
-      });
+  const [loginData, setLoginData] = useState({});
+  const history = useHistory();
+  const { user, registerUser, isLoading, authError } = useAuth();
+
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData = { ...loginData };
+    newLoginData[field] = value;
+    setLoginData(newLoginData);
+  };
+  const handleLoginSubmit = (e) => {
+    if (loginData.password !== loginData.password2) {
+      alert("Your password did not match");
+      return;
+    }
+    registerUser(loginData.email, loginData.password, loginData.name, history);
+    e.preventDefault();
   };
   return (
-    <div className="bg-light pb-5">
-      <h3 className="text-center  py-5">Register</h3>
-      <div className="w-75 mx-auto">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type="name"
-            className="form-control  mb-3"
-            {...register("name")}
-            placeholder="Your Name"
-            required
-          />
-          <input
-            type="email"
-            className="form-control  mb-3"
-            {...register("email")}
-            placeholder="Your Email"
-            required
-          />
-          <input
-            type="password"
-            className="form-control  mb-3"
-            {...register("password")}
-            placeholder="Your password"
-            required
-          />
-          <input
-            type="password"
-            className="form-control  mb-3"
-            {...register("password")}
-            placeholder="Confirm Your password"
-            required
-          />
-          <button className="btn btn-primary w-100 fw-bold" type="submit">
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+          <Typography variant="body1" gutterBottom>
             Register
-          </button>
-        </form>
-      </div>
-      <br />
-      <Link
-        className="variant-success"
-        style={{ textDecoration: "none", color: "#000" }}
-        to="/login"
-      >
-        Already Register ? Please Login
-      </Link>
-    </div>
+          </Typography>
+          {!isLoading && (
+            <form onSubmit={handleLoginSubmit}>
+              <TextField
+                sx={{ width: "75%", m: 1 }}
+                id="standard-basic"
+                label="Your Name"
+                name="name"
+                onBlur={handleOnBlur}
+                variant="standard"
+              />
+              <TextField
+                sx={{ width: "75%", m: 1 }}
+                id="standard-basic"
+                label="Your Email"
+                name="email"
+                type="email"
+                onBlur={handleOnBlur}
+                variant="standard"
+              />
+              <TextField
+                sx={{ width: "75%", m: 1 }}
+                id="standard-basic"
+                label="Your Password"
+                type="password"
+                name="password"
+                onBlur={handleOnBlur}
+                variant="standard"
+              />
+              <TextField
+                sx={{ width: "75%", m: 1 }}
+                id="standard-basic"
+                label="ReType Your Password"
+                type="password"
+                name="password2"
+                onBlur={handleOnBlur}
+                variant="standard"
+              />
+
+              <Button
+                sx={{ width: "75%", m: 1 }}
+                type="submit"
+                variant="contained"
+              >
+                Register
+              </Button>
+              <NavLink style={{ textDecoration: "none" }} to="/login">
+                <Button variant="text">Already Registered? Please Login</Button>
+              </NavLink>
+            </form>
+          )}
+          {isLoading && <CircularProgress />}
+          {user?.email && (
+            <Alert severity="success">User Created successfully!</Alert>
+          )}
+          {authError && <Alert severity="error">{authError}</Alert>}
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <img style={{ width: "100%" }} src="" alt="" />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

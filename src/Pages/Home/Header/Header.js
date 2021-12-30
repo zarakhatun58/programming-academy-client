@@ -1,27 +1,65 @@
+import { Box } from "@mui/material";
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth.js";
 
 const Header = () => {
+  const { user, logout } = useAuth();
   return (
-    <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <>
+      <Navbar
+        bg="white"
+        variant="dark"
+        sticky="top"
+        collapseOnSelect
+        expand="lg"
+      >
         <Container>
-          <Navbar.Brand href="#home">Programming-Academy</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto" style={{ listStyleType: "none" }}>
-              <Link to="/login">Courses</Link>
-              <Link to="/register">Students</Link>
-            </Nav>
-            <Nav>
-              <Link to="/login">Login</Link>
-              <Link to="/register">SignUp</Link>
-            </Nav>
+          <Navbar.Brand href="/home">
+            <img src="" alt="" />
+          </Navbar.Brand>
+          <Navbar.Toggle className="bg-dark" />
+          <Navbar.Collapse className="justify-content-end">
+            <Nav.Link as={Link} className="text-dark" to="/home">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} className="text-primary" to="/courses">
+              Courses
+            </Nav.Link>
+
+            <Navbar.Text className="text-dark">
+              <span className="text-dark">{user?.displayName}</span>
+            </Navbar.Text>
+
+            {user?.email ? (
+              <Box>
+                <NavLink
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    marginRight: "10px",
+                  }}
+                  to="/dashboard"
+                >
+                  <Button color="inherit">Dashboard</Button>
+                </NavLink>
+                <Button onClick={logout} color="inherit">
+                  Logout
+                </Button>
+              </Box>
+            ) : (
+              <NavLink
+                style={{ textDecoration: "none", color: "white" }}
+                to="/login"
+              >
+                <Button color="inherit">Login</Button>
+              </NavLink>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
+    </>
   );
 };
 

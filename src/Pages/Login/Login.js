@@ -1,122 +1,90 @@
-import React from "react";
-import { Alert } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-import useFirebase from "../../hooks/useFirebase.js";
+import React, { useState } from "react";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
+import {
+  Alert,
+  Button,
+  CircularProgress,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Container } from "@mui/material";
+import useAuth from "../../hooks/useAuth.js";
 
 const Login = () => {
-  const { register, handleSubmit, reset } = useForm();
-  const {
-    signInWithGoogle,
-    user,
-    setUser,
-    saveUser,
-    logOut,
-    setIsLoading,
-    handleEmailLogin,
-  } = useFirebase();
+  const [loginData, setLoginData] = useState({});
+  const { user, loginUser, signInWithGoogle, isLoading, authError } = useAuth();
 
-  const navigate = useNavigate();
   const location = useLocation();
+  const history = useHistory();
 
-  const url = location.state?.from || "/home";
-
-  const handleGoogleLogin = () => {
-    signInWithGoogle()
-      .then((res) => {
-        setIsLoading(true);
-        setUser(res.user);
-        saveUser(user.email, user.displayName, "PUT");
-        navigate.push(url);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setIsLoading(false);
-      });
+  const handleOnChange = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData = { ...loginData };
+    newLoginData[field] = value;
+    setLoginData(newLoginData);
   };
-  const handleLogOut = () => {
-    setIsLoading(true);
-    logOut()
-      .then((res) => {
-        setUser({});
-        navigate.push("/home");
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        // An error happened.
-        console.log(error);
-      });
+  const handleLoginSubmit = (e) => {
+    loginUser(loginData.email, loginData.password, location, history);
+    e.preventDefault();
   };
 
-  const onSubmit = (data) => {
-    handleEmailLogin(data.email, data.password);
-    reset();
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(location, history);
   };
   return (
-    <>
-      <div className="bg-light py-5">
-        <div className=" pb-5">
-          <h3 className="text-center  pb-3">Login</h3>
-          <div className="w-75 mx-auto">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <input
-                type="email"
-                className="form-control  mb-3"
-                {...register("email")}
-                placeholder="Your Email"
-                required
-              />
-              <input
-                type="password"
-                className="form-control  mb-3"
-                {...register("password")}
-                placeholder="Your password"
-                required
-              />
-              <button className="btn btn-primary w-100 fw-bold" type="submit">
-                Login
-              </button>
-            </form>
-          </div>
-        </div>
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+          <Typography variant="body1" gutterBottom>
+            Login
+          </Typography>
+          <form onSubmit={handleLoginSubmit}>
+            <TextField
+              sx={{ width: "75%", m: 1 }}
+              id="standard-basic"
+              label="Your Email"
+              name="email"
+              onChange={handleOnChange}
+              variant="standard"
+            />
+            <TextField
+              sx={{ width: "75%", m: 1 }}
+              id="standard-basic"
+              label="Your Password"
+              type="password"
+              name="password"
+              onChange={handleOnChange}
+              variant="standard"
+            />
 
-        <div className="mx-auto p-0">
-          <div className="text-center">
-            {!user?.displayName ? (
-              <button
-                onClick={handleGoogleLogin}
-                className="btn btn-primary text-white"
-              >
-                Google sign In
-              </button>
-            ) : (
-              <button
-                onClick={handleLogOut}
-                className="btn btn-primary mt-3 text-white"
-              >
-                Log Out
-              </button>
-            )}
-            <br />
-            <Link
-              className="text-success"
-              style={{
-                textDecoration: "none",
-                color: "#000",
-                marginTop: "10px",
-              }}
-              to="/register"
+            <Button
+              sx={{ width: "75%", m: 1 }}
+              type="submit"
+              variant="contained"
             >
-              New User ? Please Register
-            </Link>
+              Login
+            </Button>
+            <NavLink style={{ textDecoration: "none" }} to="/register">
+              <Button variant="text">New User? Please Register</Button>
+            </NavLink>
+            {isLoading && <CircularProgress />}
             {user?.email && (
               <Alert severity="success">Login successfully!</Alert>
             )}
-          </div>
-        </div>
-      </div>
-    </>
+            {authError && <Alert severity="error">{authError}</Alert>}
+          </form>
+          <p>------------------------</p>
+          <Button onClick={handleGoogleSignIn} variant="contained">
+            Google Sign In
+          </Button>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <img style={{ width: "100%" }} src="" alt="" />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

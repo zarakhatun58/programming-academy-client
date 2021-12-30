@@ -16,6 +16,7 @@ initializeAuthentication();
 const UseFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
 
   const auth = getAuth();
@@ -34,65 +35,99 @@ const UseFirebase = () => {
     return () => unsubscribe();
   }, [auth]);
 
-  useEffect(() => {
-    fetch(`https://glacial-thicket-49504.herokuapp.com/users/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAdmin(data?.admin);
-      });
-  }, [user?.email]);
   console.log(admin);
-  const handleRegister = (email, password, name) => {
+  const registerUser = (email, password, name, history) => {
+    setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+        setAuthError("");
         const newUser = { email, displayName: name };
-
         setUser(newUser);
+        // save user to the database
+        saveUser(email, name, "POST");
+        // send name to firebase after creation
         updateProfile(auth.currentUser, {
           displayName: name,
         })
           .then(() => {})
           .catch((error) => {});
+        history.replace("/");
       })
       .catch((error) => {
+        setAuthError(error.message);
         console.log(error);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
-  const handleEmailLogin = (email, password) => {
+  const loginUser = (email, password, location, history) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        // ...
+        const destination = location?.state?.from || "/";
+        history.replace(destination);
+        setAuthError("");
       })
       .catch((error) => {
-        console.log(error);
-      });
+        setAuthError(error.message);
+      })
+      .finally(() => setIsLoading(false));
   };
 
-  const signInWithGoogle = () => {
-    return signInWithPopup(auth, googleProvider);
+  const signInWithGoogle = (location, history) => {
+    setIsLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        saveUser(user.email, user.displayName, "PUT");
+        setAuthError("");
+        const destination = location?.state?.from || "/";
+        history.replace(destination);
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally(() => setIsLoading(false));
   };
 
-  const logOut = () => {
-    console.log("logout");
+  useEffect(() => {
+    fetch(`https://stark-caverns-04377.herokuapp.com/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user.email]);
 
-    return signOut(auth);
+  const logout = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("https://stark-caverns-04377.herokuapp.com/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
   };
   return {
     user,
     admin,
-    setUser,
-    signInWithGoogle,
+
     isLoading,
-    setIsLoading,
-    handleRegister,
-    handleEmailLogin,
-    logOut,
+    authError,
+    registerUser,
+    loginUser,
+    signInWithGoogle,
+    logout,
   };
 };
 

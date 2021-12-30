@@ -1,0 +1,131 @@
+[
+  {
+    "name": "HTML Full Course",
+    "img": "https://i.ibb.co/GpLzrDn/html2.png",
+    "price": "₹ 2000 rupees",
+    "rating": "3",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "CSS3 Full Course",
+    "img": "https://i.ibb.co/fNm11n3/css.jpg",
+    "price": "₹ 2100 rupees",
+    "rating": "3",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Javascript",
+    "img": "https://i.ibb.co/HHC0Vsq/javascript2.png",
+    "price": "₹ 2000 rupees",
+    "rating": "5",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "React js Full Course",
+    "img": "https://i.ibb.co/vP1dtgp/react.png",
+    "price": "₹ 3000 rupees",
+    "rating": "3",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Angular js Course",
+    "img": "https://i.ibb.co/wgF8LWh/angular.jpg",
+    "price": "₹ 3000 rupees",
+    "rating": "4",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Bootstrap Course",
+    "img": "https://i.ibb.co/HxXVpdr/bootstrap.jpg",
+    "price": "₹ 3000 rupees",
+    "rating": "2",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Frontend Web Development",
+    "img": "https://i.ibb.co/DCYW6PV/banner2.jpg",
+    "price": "₹ 3000 rupees",
+    "rating": "3",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "MERN Stack Web Development",
+    "img": "https://i.ibb.co/hC5rRzL/banner3.png",
+    "price": "₹ 3000 rupees",
+    "rating": "4",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Backend Web Development",
+    "img": "https://i.ibb.co/WgDwdF8/back.jpg",
+    "price": "₹ 3000 rupees",
+    "rating": "3",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Node Js Course",
+    "img": "https://i.ibb.co/Mg5pP7g/express.png",
+    "price": "₹ 3000 rupees",
+    "rating": "5",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Firebase Full Course",
+    "img": "https://i.ibb.co/MCq2jq8/firebase1.png",
+    "price": "₹ 3000 rupees",
+    "rating": "2",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Java Full Course",
+    "img": "https://i.ibb.co/2ds49Qf/java.jpg",
+    "price": "₹ 3000 rupees",
+    "rating": "3",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "MongoDB Course",
+    "img": "https://i.ibb.co/2dj6kP1/mongodb1.png",
+    "price": "₹ 3000 rupees",
+    "rating": "5",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Python Full Course",
+    "img": "https://i.ibb.co/jgC4SZ4/python.jpg",
+    "price": "₹ 3000 rupees",
+    "rating": "3",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "Django Full Course",
+    "img": "https://i.ibb.co/KqB9FVg/news.jpg",
+    "price": "₹ 3000 rupees",
+    "rating": "4",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "MySQL Full Course",
+    "img": "https://i.ibb.co/ZfWdhTX/mysql.png",
+    "price": "₹ 3000 rupees",
+    "rating": "5",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "PHP Full Course",
+    "img": "https://i.ibb.co/zxrb98L/php.png",
+    "price": "₹ 3000 rupees",
+    "rating": "3",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "name": "React Redux",
+    "img": "https://i.ibb.co/bKYrVK3/redux.jpg",
+    "price": "₹ 3000 rupees",
+    "rating": "4",
+    "description": "We provide end-to-end assistance, from learning basic programming to further support in building a career."
+  },
+  {
+    "img": "https://i.ibb.co/tMkSjZj/tailwind.jpg"
+  }
+]
